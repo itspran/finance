@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+
+
+    <table class="table tablestriped">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-start">Name</th>
+                <th class="text-start">Shares</th>
+                <th class="text-start">Price</th>
+                <th class="text-start">TOTAL</th>
+            </tr>
+            {% for stock in info %}
+            
+            <tr>
+                <td class="text-start">
+                    {{stock["symbol"]}}
+                </td>
+                <td class="text-start">
+                    {{stock["name"]}}
+                </td>
+                <td class="text-start">
+                    {{stock["shares"]}}
+                </td>
+                <td class="text-start">
+                    {{stock["price"] | usd}}
+                </td>
+                <td class="text-start">
+                    {{stock["total"] | usd}}
+                </td>
+                
+            </tr>
+            
+            {% endfor %}
+            
+            <tr>
+                <td class="text-start"></td>
+                <td class="text-start"></td>
+                <td class="text-start"></td>
+                <td class="text-start fw-bold">Cash</td>
+                <td class="text-start fw-bold" colspan="4">
+                    {{cash | usd}}
+                    
+                </td>
+                
+            </tr>
+            <tr>
+                <td class="text-start"></td>
+                <td class="text-start"></td>
+                <td class="text-start"></td>
+                <td class="text-start fw-bold">Total</td>
+                <td class="text-start fw-bold" colspan="4">
+                    {{total | usd}}
+                    
+                </td>
+                
+            </tr>
+        </thead>
+    </table>
+{% endblock %}
